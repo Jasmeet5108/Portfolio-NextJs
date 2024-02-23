@@ -1,10 +1,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-// import Home from "@/components/Home";
-// import Skills from "@/components/Skills";
-// import Projects from "@/components/Projects";
-// import Contact from "@/components/Contact";
+import Home from "@/components/Home";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,10 +20,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Navbar />
         {children}
-        {/* <Home />
+        <Home />
         <Skills />
         <Projects />
-        <Contact /> */}
+        <Contact />
         <Footer />
       </body>
     </html>
