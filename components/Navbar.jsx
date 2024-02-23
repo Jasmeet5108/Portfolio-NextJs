@@ -1,33 +1,66 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 
+// const Navbar = () => {
+//     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+//     const [className, setClassName] = useState('-translate-x-full');
+
+//     const toggleMenu = () => {
+//         if (className === '-translate-x-full') {
+//             setClassName('-translate-x-0');
+//         }
+//         else {
+//             setClassName('-translate-x-full');
+//         }
+//     }
+
+//     const handleToggle = (e) => {
+//         if (e.target.checked) {
+//             setTheme('dark');
+//         }
+//         else {
+//             setTheme('light');
+//         }
+//     }
+
+//     useEffect(() => {
+//         localStorage.setItem("theme", theme);
+//         const localtheme = localStorage.getItem("theme");
+//         document.querySelector('html').setAttribute('data-theme', localtheme);
+//     }, [theme]);
+
 const Navbar = () => {
-    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+    const [theme, setTheme] = useState("light"); // Default theme
     const [className, setClassName] = useState('-translate-x-full');
 
+    useEffect(() => {
+        // Check if localStorage is available (browser environment)
+        if (typeof window !== 'undefined') {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                setTheme(savedTheme);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        // Set the theme class on the html element
+        document.querySelector('html').setAttribute('data-theme', theme);
+    }, [theme]);
+
     const toggleMenu = () => {
-        if (className === '-translate-x-full') {
-            setClassName('-translate-x-0');
-        }
-        else {
-            setClassName('-translate-x-full');
-        }
+        setClassName(prevClassName => prevClassName === '-translate-x-full' ? '-translate-x-0' : '-translate-x-full');
     }
 
     const handleToggle = (e) => {
-        if (e.target.checked) {
-            setTheme('dark');
-        }
-        else {
-            setTheme('light');
+        const newTheme = e.target.checked ? 'dark' : 'light';
+        setTheme(newTheme);
+        // Save the theme preference in localStorage (if available)
+        if (typeof window !== 'undefined') {
+            localStorage.setItem("theme", newTheme);
         }
     }
 
-    useEffect(() => {
-        localStorage.setItem("theme", theme);
-        const localtheme = localStorage.getItem("theme");
-        document.querySelector('html').setAttribute('data-theme', localtheme);
-    }, [theme]);
 
 
     return (
