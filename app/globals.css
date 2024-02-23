@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    /* font-family: 'Poppins', sans-serif; */
+    scroll-behavior: smooth;
+}
+
+/* Example gradient styles */
+.text-gradient {
+    font-size: 30px;
+    background: -webkit-linear-gradient(#00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Adjust colors as needed */
+}
+
+.blue-gradient_text {
+    @apply bg-gradient-to-r from-[#00c6ff] to-[#0072ff] bg-clip-text text-transparent;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(2rem)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.animate-fade-up {
+    animation: fade-up 1s ease forwards
+}
+
+.svg{
+    /* background-color:; */
+    border: 2px solid #8992a3;
+    padding: 3.5px;
+    border-radius: 20px;
+}
+
+.gradient-box {
+    background: linear-gradient(45deg, #0072ff, #00c6ff);
+    transition: all 1s ease; /* Smooth transition for the background property */
+
+    /* Additional styling for demonstration purposes */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-box:hover {
+    background: linear-gradient(45deg, #00c6ff, #0072ff); /* New gradient on hover */
+}
